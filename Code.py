@@ -18,7 +18,7 @@ class MainWin:
     
     def __init__(self):
         
-        self.widgets = gtk.glade.XML("Principal_8.glade")
+        self.widgets = gtk.glade.XML("Principal.glade")
         
         
         signals = { 
@@ -27,14 +27,15 @@ class MainWin:
         
         self.widgets.signal_autoconnect(signals)
         self.label1 = self.widgets.get_widget("label1")
+        
         self.button1 = self.widgets.get_widget("button1")
         self.button1.connect("clicked", self.clicked,  None)
                
         self.button2 = self.widgets.get_widget("button2")
         self.button2.connect("clicked", self.shutdown,  None)
         
-        self.button3 = self.widgets.get_widget("button3")
-        self.button3.connect("clicked", self.ChangeUser, None) 
+        #self.button3 = self.widgets.get_widget("button3")
+        #self.button3.connect("clicked", self.ChangeUser, None) 
         
         
   
@@ -71,25 +72,25 @@ class MainWin:
 		print output
 		
 
-    def ChangeUser (self, widget, button3):
-		dialog3= IDOperator();
-		run = dialog3.run()
+    #def ChangeUser (self, widget, button3):
+		#dialog3= IDOperator();
+		#run = dialog3.run()
 		
     
 			
 class KeyAdmin:
     def __init__(self, usuario="", Contrasena=""):
         
-		self.gladefile = "Principal_8.glade"
+		self.gladefile = "Contraseña.glade"
 		self.usuario= usuario
 		self.Contrasena= Contrasena
 
     def run(self):
 
-		#load the dialog from the glade file	  
-		self.wTree = gtk.glade.XML(self.gladefile, "dialog1") 
-		#Get the actual dialog widget
-		self.dlg = self.wTree.get_widget("dialog1")
+			  
+		self.wTree = gtk.glade.XML(self.gladefile, "window1") 
+		
+		self.dlg = self.wTree.get_widget("window1")
 
 		self.enuser = self.wTree.get_widget("enuser")
 		self.enuser.set_text(self.usuario)
@@ -115,7 +116,7 @@ class Menu:
 
     def __init__(self):
         
-		self.gladefile = "Configuracion.glade"
+		self.gladefile = "Menu.glade"
 
     def run(self):
 	  
@@ -129,7 +130,7 @@ class Access_Denied:
 	
 	def __init__(self):
 		
-		self.gladefile = "Principal_8.glade"
+		self.gladefile = "Contraseña.glade"
 	
 	def run (self):
 		

@@ -11,7 +11,7 @@ import gtk.glade
 import time
 import datetime
 import pango
-
+import serial
 
 
 class MainWin:
@@ -23,6 +23,9 @@ class MainWin:
         
         signals = { 
                     "gtk_main_quit" : gtk.main_quit }
+        
+        
+        
         
         
         self.widgets.signal_autoconnect(signals)
@@ -144,17 +147,37 @@ class IDOperator:
 
 	def __init__(self):
 		
-		self.gladefile = "Operador.glade"
+		self.widgets = gtk.glade.XML("Operador.glade")
+		signals = { 
+					"gtk_main_quit" : gtk.main_quit }
+					
+
 	
 	def run (self):
 		
-		self.wTree = gtk.glade.XML(self.gladefile, "window1")
-		self.dlg = self.wTree.get_widget("window1")
+
+		self.button35 = self.widgets.get_widget("button35")
+		self.button35.connect("clicked", self.readUART,  None)
+		
+		
 		self.result = self.dlg.run()
 		self.dlg.destroy()
-		return
-
 		
+		
+	def readUART (self, widget, button35):
+		print("leyendo de la UART")
+		self.label1 = self.widgets.get_widget("label1")
+		ser = serial.Serial ("/dev/ttyAMA0")
+		ser.baudrate = 9600
+		data= ser.read(13)
+		self.label1.set_text(data)
+		print (data)
+		ser.close()
+		
+		
+	
+		
+				
 		    
 def main():
     gtk.main()

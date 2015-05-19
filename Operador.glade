@@ -19,7 +19,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <widget class="GtkLabel" id="Label1">
+              <widget class="GtkLabel" id="label2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Tarjeta:</property>
@@ -35,7 +35,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <widget class="GtkLabel" id="labeltarjeta">
+                  <widget class="GtkLabel" id="label1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                   </widget>
@@ -55,9 +55,11 @@
           </packing>
         </child>
         <child>
-          <widget class="GtkLabel" id="label4">
+          <widget class="GtkButton" id="button35">
+            <property name="label" translatable="yes">Read From UART</property>
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
           </widget>
           <packing>
             <property name="expand">True</property>

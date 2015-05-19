@@ -34,8 +34,8 @@ class MainWin:
         self.button2 = self.widgets.get_widget("button2")
         self.button2.connect("clicked", self.shutdown,  None)
         
-        #self.button3 = self.widgets.get_widget("button3")
-        #self.button3.connect("clicked", self.ChangeUser, None) 
+        self.button3 = self.widgets.get_widget("button3")
+        self.button3.connect("clicked", self.ChangeUser, None) 
         
         
   
@@ -72,9 +72,9 @@ class MainWin:
 		print output
 		
 
-    #def ChangeUser (self, widget, button3):
-		#dialog3= IDOperator();
-		#run = dialog3.run()
+    def ChangeUser (self, widget, button3):
+		dialog3= IDOperator();
+		run = dialog3.run()
 		
     
 			
@@ -144,12 +144,12 @@ class IDOperator:
 
 	def __init__(self):
 		
-		self.gladefile = "Principal_8.glade"
+		self.gladefile = "Operador.glade"
 	
 	def run (self):
 		
-		self.wTree = gtk.glade.XML(self.gladefile, "dialog3")
-		self.dlg = self.wTree.get_widget("dialog3")
+		self.wTree = gtk.glade.XML(self.gladefile, "window1")
+		self.dlg = self.wTree.get_widget("window1")
 		self.result = self.dlg.run()
 		self.dlg.destroy()
 		return

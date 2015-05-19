@@ -81,16 +81,16 @@ class MainWin:
 class KeyAdmin:
     def __init__(self, usuario="", Contrasena=""):
         
-		self.gladefile = "Contraseña.glade"
+		self.gladefile = "Principal.glade"
 		self.usuario= usuario
 		self.Contrasena= Contrasena
 
     def run(self):
 
 			  
-		self.wTree = gtk.glade.XML(self.gladefile, "window1") 
+		self.wTree = gtk.glade.XML(self.gladefile, "dialog1") 
 		
-		self.dlg = self.wTree.get_widget("window1")
+		self.dlg = self.wTree.get_widget("dialog1")
 
 		self.enuser = self.wTree.get_widget("enuser")
 		self.enuser.set_text(self.usuario)

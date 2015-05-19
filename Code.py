@@ -78,9 +78,7 @@ class MainWin:
     def ChangeUser (self, widget, button3):
 		dialog3= IDOperator();
 		run = dialog3.run()
-		
-    
-			
+					
 class KeyAdmin:
     def __init__(self, usuario="", Contrasena=""):
         
@@ -170,15 +168,16 @@ class IDOperator:
 		ser = serial.Serial ("/dev/ttyAMA0")
 		ser.baudrate = 9600
 		data= ser.read(13)
-		self.label1.set_text(data)
+		if (data=="140032F5B665"):
+			self.label1.set_text("Gonzalo Zardain")
+			
+		
+		else:
+			self.label1.set_text("User not Found")
+			
 		print (data)
 		ser.close()
-		
-		
-	
-		
-				
-		    
+				    
 def main():
     gtk.main()
 

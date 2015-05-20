@@ -170,6 +170,8 @@ class IDOperator:
 		data= ser.read(13)
 		if (data=="140032F5B665"):
 			self.label1.set_text("Gonzalo Zardain")
+		if (data=="140032E331F4"):
+			self.label1.set_text("Israel Garcia")
 			
 		
 		else:

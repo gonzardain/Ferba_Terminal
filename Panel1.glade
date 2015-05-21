@@ -49,7 +49,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="xalign">1</property>
-                            <property name="label" translatable="yes">Enrique Peña Nieto</property>
+                            <property name="label" translatable="yes">Eduardo Castro Peña</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -85,19 +85,17 @@
                         <property name="can_focus">False</property>
                         <child>
                           <object class="GtkVBox" id="vbox7">
-                            <property name="height_request">2</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="spacing">28</property>
                             <child>
-                              <object class="GtkHBox" id="hbox6">
+                              <object class="GtkHBox" id="hbox8">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <child>
                                   <object class="GtkImage" id="image3">
-                                    <property name="height_request">4</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="pixel_size">40</property>
                                     <property name="icon_name">package-x-generic</property>
                                   </object>
                                   <packing>
@@ -106,23 +104,64 @@
                                     <property name="position">0</property>
                                   </packing>
                                 </child>
+                                <child>
+                                  <object class="GtkEntry" id="entry2">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="invisible_char">•</property>
+                                    <property name="text" translatable="yes">Pequeña</property>
+                                    <property name="xalign">0.5</property>
+                                    <property name="primary_icon_activatable">False</property>
+                                    <property name="secondary_icon_activatable">False</property>
+                                    <property name="primary_icon_sensitive">True</property>
+                                    <property name="secondary_icon_sensitive">True</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">True</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
                                 <property name="fill">True</property>
-                                <property name="padding">2</property>
                                 <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry" id="entry1">
+                              <object class="GtkHBox" id="hbox6">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="invisible_char">•</property>
-                                <property name="primary_icon_activatable">False</property>
-                                <property name="secondary_icon_activatable">False</property>
-                                <property name="primary_icon_sensitive">True</property>
-                                <property name="secondary_icon_sensitive">True</property>
+                                <property name="can_focus">False</property>
+                                <child>
+                                  <object class="GtkImage" id="image2">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="icon_name">appointment-new</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">True</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkEntry" id="entry1">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="invisible_char">•</property>
+                                    <property name="text" translatable="yes">19/05/2015 -- 11:35</property>
+                                    <property name="primary_icon_activatable">False</property>
+                                    <property name="secondary_icon_activatable">False</property>
+                                    <property name="primary_icon_sensitive">True</property>
+                                    <property name="secondary_icon_sensitive">True</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">True</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -134,6 +173,7 @@
                           <packing>
                             <property name="expand">True</property>
                             <property name="fill">True</property>
+                            <property name="padding">2</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
@@ -149,41 +189,10 @@
                                   <placeholder/>
                                 </child>
                                 <child>
-                                  <object class="GtkVBox" id="vbox9">
-                                    <property name="height_request">54</property>
+                                  <object class="GtkLabel" id="label4">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="spacing">2</property>
-                                    <child>
-                                      <object class="GtkImage" id="image6">
-                                        <property name="height_request">51</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="pixel_size">43</property>
-                                        <property name="icon_name">appointment-new</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">True</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">0</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkEntry" id="entry2">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="invisible_char">•</property>
-                                        <property name="primary_icon_activatable">False</property>
-                                        <property name="secondary_icon_activatable">False</property>
-                                        <property name="primary_icon_sensitive">True</property>
-                                        <property name="secondary_icon_sensitive">True</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">False</property>
-                                        <property name="position">1</property>
-                                      </packing>
-                                    </child>
+                                    <property name="label" translatable="yes">Última Caja Registrada</property>
                                   </object>
                                   <packing>
                                     <property name="resize">True</property>

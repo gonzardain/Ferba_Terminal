@@ -13,6 +13,9 @@ import datetime
 import pango
 import serial
 
+import RPi.GPIO as GPIO
+
+
 
 class MainWin:
     
@@ -26,6 +29,8 @@ class MainWin:
         
         
         
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(23, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
         
         
         self.widgets.signal_autoconnect(signals)
@@ -55,11 +60,22 @@ class MainWin:
 		
          
     def update(self):
-        self.statusbar = self.widgets.get_widget("statusbar")
-        context_id = self.statusbar.get_context_id("data")
-        self.push_item(context_id, time.strftime('Configuración	               	        							               %d, %b %Y  --  %H:%M'))
+		if(GPIO.input(23) ==1):
+			command = "/usr/bin/sudo shutdown -h now"
+			import subprocess
+			process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+			output = process.communicate()[0]
+			print output 
+			
+		else:
+			print("System on")
+			
+		
+			self.statusbar = self.widgets.get_widget("statusbar")
+			context_id = self.statusbar.get_context_id("data")
+			self.push_item(context_id, time.strftime('Configuración	               	        							               %d, %b %Y  --  %H:%M'))
         
-        return True
+			return True
 
     def clicked (self, widget, button1):
 	

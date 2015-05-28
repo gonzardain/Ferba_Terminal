@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <WebserverURL />
+  <Protocol>http</Protocol>
+  <Path>FlexTrace/WebServer/mail.aspx</Path>
+  <QueryString>packageType=PT</QueryString>
+  <WebServerUrl />
+  <Server>www.ferba.es</Server>
+  <Port>8080</Port>
+  <WeightStrategy>1</WeightStrategy>
+  <WorkingStrategy>1</WorkingStrategy>
+  <ProcessingPlantID>0</ProcessingPlantID>
+</Settings>

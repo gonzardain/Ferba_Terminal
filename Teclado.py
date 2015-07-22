@@ -11,13 +11,14 @@ import time
 import datetime
 import pango
 import serial
+import Teclado
 
 
 class MainWin:
     
     def __init__(self):
         
-        self.widgets = gtk.glade.XML("Teclado.glade")
+        self.widgets = gtk.glade.XML("Teclado1.glade")
         
         
         signals = { 
@@ -151,14 +152,19 @@ class MainWin:
 		return
 
     def punto (self, widget, button11):
-		
+		global flag_punto
+		global posicion
 		self.entry1.append_text(".")
 		self.i = self.i+1
-		return
+		posicion = self.i
+		print(posicion)
+		self.button11.set_sensitive(False)
+		flag_punto = True
+		return 
 		
     def back (self, widget, button12):
-		#self.entry1.delete_text(self.i, self.c)
-		#self.i = self.i-1
+		global flag_punto
+		global posicion
 		
 		print(self.i)
 		if(self.i <= -1):
@@ -168,19 +174,27 @@ class MainWin:
 			self.entry1.delete_text(self.i, self.c)
 			self.i = self.i-1
 			print(self.i)
-	
 		
+		if(self.i < posicion):
+			self.button11.set_sensitive(True)
+				
 		return
 
     def clr (self, widget, button13):
 		self.entry1.set_text("")
 		self.i = -1
+		self.button11.set_sensitive(True)
+		
 		
 		return
 
     def ok (self, widget, button14):
 		resultado = self.entry1.get_text()
-		print(resultado, self.i)
+		print(resultado)
+		self.entry1.set_text ("")
+		self.button11.set_sensitive(True)
+		self.i = -1
+		
 		
 		return
 
@@ -196,5 +210,5 @@ def main():
 
 if __name__ == '__main__':
 	
-	MainWin()
+	MainWin() 
 	main()

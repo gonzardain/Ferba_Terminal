@@ -369,7 +369,7 @@ class leer_operador(threading.Thread):
 			ser = serial.Serial ("/dev/ttyAMA0")
 			ser.baudrate = 9600
 			#a = ser.read(13)
-			a='hola'
+			a=''
 			ser.flush()
 			ser.close()
 			self.args = a
@@ -402,7 +402,6 @@ class obtener_peso(threading.Thread):
 		max1 = limh
 		flaglim = 0
 		cont = 0
-		bascula.ini_ADC()
 		parametros_filtro = bascula.ini_filtrar_ADC()
 		print (ADC_running)
 		while(ADC_running==True):
@@ -429,8 +428,10 @@ class obtener_peso(threading.Thread):
 					
 					if (valor_peso_indicador >= limh and flaglim == 0):
 						flaglim = 1
-					valor_peso_indicador_txt = str(valor_peso_indicador)
-					self.args = valor_peso_indicador_txt[:4]
+					if (valor_peso_indicador < 0):
+						valor_peso_indicador=0
+					valor_peso_indicador_txt = str("%0.2f" %valor_peso_indicador)
+					self.args = valor_peso_indicador_txt
 			else:
 				time.sleep(1)
 				#return
@@ -612,7 +613,6 @@ class operation():
 	
 	def obtener_punto1 (self, widget, button14):
 		global punto_y1
-		bascula.ini_ADC()
 		array_lecturaADC = []
 		cont = 0
 		while (cont < 10):
@@ -628,7 +628,6 @@ class operation():
 	def obtener_punto2 (self, widget, button17):
 		global punto_x2
 		global punto_y2
-		bascula.ini_ADC()
 		array_lecturaADC = []
 		cont = 0
 		while (cont < 10):
@@ -706,7 +705,6 @@ class operation():
 
 		
 if __name__ == "__main__":
-	#global punto_x1, punto_y1, punto_x2, punto_y2
 	global punto_x1
 	global punto_y1
 	global punto_x2
@@ -714,7 +712,6 @@ if __name__ == "__main__":
 	global m
 	global n
 	
-	#~ global ADC_running
 	
 	ADC_running=True
 	UART_running=True
@@ -736,7 +733,6 @@ if __name__ == "__main__":
 	gtk.timeout_add(200, ventana.updates)
 	gtk.gdk.threads_init()                                           
 	gtkt = threading.Thread(target=gtk.main, args=())  
-	print('aqui estoy')
 	time.sleep(1)        
 	gtkt.start()
 

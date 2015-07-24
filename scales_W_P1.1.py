@@ -27,6 +27,7 @@ import RPi.GPIO as GPIO
 import bascula
 from collections import Counter
 import math
+import os
 GPIO.setwarnings(False)
 global b
 global m
@@ -283,6 +284,7 @@ class ventana_principal():
 			self.boton_caja6.set_active(False)
 			self.boton_caja7.set_active(False)
 			self.boton_caja8.set_active(False)
+			
 		else:
 			return 
 			
@@ -313,7 +315,23 @@ class ventana_principal():
 				self.indicador_PesoActual.set_text(obtener_peso.args)
 				self.indicador_Peso.set_text(obtener_peso.high)
 				if(obtener_peso.flag == True):
-					self.indicador_FechaHora.set_text(time.strftime('%d, %b %Y  --  %H:%M'))
+					obtener_peso.flag = False
+					tipo_caja_imprimir = str(self.indicador_TipoCaja.get_text())
+					print tipo_caja_imprimir
+					self.indicador_FechaHora.set_text(time.strftime('%d%b%Y%H:%M')) #'%d, %b %Y  --  %H:%M'
+					fecha_imprimir = str(self.indicador_FechaHora.get_text())
+					peso_imprimir = str(self.indicador_Peso.get_text())
+					strpath = "/home/pi/Programming/Ferba/"
+					strfile = "qr"
+					time.sleep(.25)
+					os.system("qrencode -o "+strpath+strfile+" '<PT>=<"+tipo_caja_imprimir+">&<PI>=<"+peso_imprimir+">&<DT>=<"+fecha_imprimir+">&<LL>=<>&<LP>=<>&<LI>=<>&<LZ>=<>&<LG>=<>&<LO>=<>&<OP>=<>&'")
+					time.sleep(.25)
+					command = "/usr/bin/sudo lpr -P GODEX_EZ-1100P qr"
+					import subprocess
+					process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+					output = process.communicate()[0]
+					print output
+					
 			except:	
 				ADC_running=False
 				UART_running=False
